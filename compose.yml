@@ -24,10 +24,10 @@ services:
       - .:/home/ghost
 
       ## SSH Agent forwarding
-      - ${SSH_AUTH_SOCK}:/ssh-agent
+      #- ${SSH_AUTH_SOCK}:/ssh-agent
 
       ## Git config
-      - ${HOME}/.gitconfig:/root/.gitconfig:ro
+      #- ${HOME}/.gitconfig:/root/.gitconfig:ro
 
       # Volume exclusions:
       ## Prevent collisions between host and container node_modules
@@ -125,7 +125,8 @@ services:
         condition: service_healthy
     environment:
       - DEBUG=${DEBUG:-}
-      - SSH_AUTH_SOCK=/ssh-agent
+      #- SSH_AUTH_SOCK=/ssh-agent
+      - url=http://192.168.150.73
       - GHOST_DEV_IS_DOCKER=true
       - GHOST_DEV_APP_FLAGS=${GHOST_DEV_APP_FLAGS:-}
       - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY:-}
